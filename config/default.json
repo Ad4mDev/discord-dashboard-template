@@ -1,0 +1,19 @@
+
+{
+    "client": {
+      "token": "",
+      "prefix": "!"
+    },
+    "mongodb": {
+      "mongoURI": "
+    },
+    "dashboard": {
+      "oauthSecret": "",
+      "sessionSecret": "super-secret-session-thing",
+      "description": ""
+    },
+    "serverConfig": {
+      "guildId": "",
+      "webhookClient": {}
+    }
+  }
