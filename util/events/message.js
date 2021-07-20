@@ -1,11 +1,17 @@
 const Discord = require('discord.js');
 const config = require('config')
+const guildData = require('../../models/guild')
 
 module.exports = async message => {
 
 	let client = message.client;
 
-	let prefix = config.get('client.prefix')
+	const data = await guildData.findOne({ guildId: message.guild.id });
+
+	let prefix;
+
+	if(data.settings.prefix) prefix = data.settings.prefix
+	else config.get('client.prefix')
 
 	let args = message.content.split(' ').slice(1);
 
@@ -47,7 +53,7 @@ module.exports = async message => {
 		}
 
 
-		cmd.run(client, message, args);
+		cmd.run(client, message, args, guildData);
 
 	}
 };

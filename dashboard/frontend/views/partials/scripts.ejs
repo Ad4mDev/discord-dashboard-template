@@ -1,0 +1,69 @@
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src='https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js'></script>
+<script src="/static/static/js/embed.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="/static/js/init-alpine.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+<script src="/static/js/charts-lines.js" defer></script>
+<script src="/static/js/charts-pie.js" defer></script>
+
+<script>
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
+  </script>
+
+  
+  
+  <script>
+      var userMenuDiv = document.getElementById("userMenu");
+      var userMenu = document.getElementById("userButton");
+  
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+  
+      document.onclick = check;
+  
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+  
+        if (!checkParent(target, userMenuDiv)) {
+          if (checkParent(target, userMenu)) {
+            if (userMenuDiv.classList.contains("invisible")) {
+              userMenuDiv.classList.remove("invisible");
+            } else {
+              userMenuDiv.classList.add("invisible");
+            }
+          } else {
+            userMenuDiv.classList.add("invisible");
+          }
+        }
+  
+        if (!checkParent(target, navMenuDiv)) {
+          if (checkParent(target, navMenu)) {
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            navMenuDiv.classList.add("hidden");
+          }
+        }
+      }
+  
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
+      }
+    </script>

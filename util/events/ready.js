@@ -1,11 +1,14 @@
 const config = require('config')
 const chalk = require('chalk')
 const fs = require('fs')
+const mongoose = require('mongoose')
 module.exports = async client => {
 
     client.user.setStatus("online");
     console.log(`Discord API'ye Bağlanıldı: ` + client.user.username)
-
+    await mongoose.connect(config.get('mongodb.mongoURI'), { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+    .then(() => console.log(chalk.blue(`[${client.user.username}]`) + " " + chalk.yellow('MongoDB Connected')))
+    .catch(err => console.log(err));
     var oyun = [
         ``,
     ];
